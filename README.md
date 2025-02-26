@@ -162,16 +162,15 @@ public class Main {
         // 输出结果
         System.out.println("result: " + result);
     }
+}
 ```
 
 ---
 
 ### **4. 运行程序**
 
-```java
-result:
-The result
-of 5+3is 8
+```text
+result: The result of 5 + 3 is 8
 ```
 
 ---
@@ -182,73 +181,27 @@ of 5+3is 8
 
 如果动态库中返回C面向对象结构体，Java调用后会报错，由于没有返回对象成功例子，所有上面例子都是返回数据类型。
 
-```java
+```text
 #
-        #A fatal
-error has
-been detected
-by the
-Java Runtime
-Environment:
-        #
-        #
-
-SIGSEGV(0xb) at pc=0x00000001084f6f3e,pid=75392,tid=0x0000000000001603
-        #
-        #
-JRE version:
-
-Java(TM) SE Runtime Environment (8.0_301-b09)(build 1.8.0_301-b09)
-        #
-Java VM:
-
-Java HotSpot(TM) 64-
-Bit Server
-
-VM(25.301-b09 mixed mode bsd-amd64 compressed oops)
+# A fatal error has been detected by the Java Runtime Environment:
 #
-Problematic frame:
-        #C  [libadd.dylib+0xf3e]add+0x1e
-        #
-        #
-Failed to
-write core
-dump.Core dumps
-have been
-disabled.To enable
-core dumping, try"ulimit -c unlimited"
-before starting
-Java again
+#  SIGSEGV (0xb) at pc=0x00000001084f6f3e, pid=75392, tid=0x0000000000001603
 #
-        #
-An error
-report file
-with more
-information is
-saved as:
-        # /Users/yeshengguang/Desktop/ysg/demo/call-c-library/hs_err_pid75392.log
+# JRE version: Java(TM) SE Runtime Environment (8.0_301-b09) (build 1.8.0_301-b09)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.301-b09 mixed mode bsd-amd64 compressed oops)
+# Problematic frame:
+# C  [libadd.dylib+0xf3e]  add+0x1e
 #
-        #
-If you
-would like
-to submit
-a bug
-report,
-please visit:
-        #http://bugreport.java.com/bugreport/crash.jsp
-        #
-The crash
-happened outside
-the Java
-Virtual Machine
-in native code .
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
 #
-See problematic
-frame for
-where to
-report the
-bug .
+# An error report file with more information is saved as:
+# /Users/yeshengguang/Desktop/ysg/demo/call-c-library/hs_err_pid75392.log
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
 #
 ```
 
-提示开启ulimit -c unlimited核心转储，在同一个进程开启后，使用java命令执行代码依然报错，暂时没有合适的解决方案。
+提示开启ulimit -c unlimited核心转储，在同一个进程开启后，使用java命令执行代码依然报错，暂时没有合适的解决方案，如果有结构体建议使用JSON字符串返回。
